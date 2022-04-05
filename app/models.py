@@ -1,9 +1,13 @@
 from sqlalchemy import  Column, Integer, String
 from config import Base
 
-class Book(Base):
-    __tablename__ ="book"
+class Berita(Base):
+    __tablename__ ="berita"
 
-    id = Column(Integer, primary_key=True, index=True)
     title = Column(String)
-    description = Column(String)
+    date = Column(String)
+    author = Column(String)
+    link = Column(Integer, primary_key=True)
+    category = Column(String)
+    website = Column(String)
+    content = Column(String)

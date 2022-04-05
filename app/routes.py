@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, Path
 from fastapi import Depends
 from config import SessionLocal
 from sqlalchemy.orm import Session
-from schemas import BookSchema, Request, Response, RequestBook
+from schemas import Response
 
 import crud
 
@@ -17,38 +17,31 @@ def get_db():
         db.close()
 
 
-# @router.post("/create")
-# async def create_book_service(request: RequestBook, db: Session = Depends(get_db)):
-#     crud.create_book(db, book=request.parameter)
-#     return Response(status="Ok",
-#                     code="200",
-#                     message="Book created successfully").dict(exclude_none=True)
-
-
 @router.get("/")
-async def get_books(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    _books = crud.get_book(db, skip, limit)
-    return Response(status="Ok", code="200", message="Success fetch all data", result=_books)
-
-@router.get("/{id}")
-async def filter_id(id:int,db:Session = Depends(get_db)):
-    _books = crud.get_book_by_id(db,id)
-    return Response(status="Ok", code="200", message="Success fetch all data", result=_books)
+async def get_all(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    _berita = crud.get_all(db, skip, limit)
+    return Response(status="Ok", code="200", message="Success fetch all data", result=_berita)
 
 @router.get("/title/{title}")
 async def filter_title(title:str,db:Session = Depends(get_db)):
-    _books = crud.get_title(db,title)
-    return Response(status="Ok", code="200", message="Success fetch all data", result=_books)
+    _berita = crud.get_title(db,title)
+    return Response(status="Ok", code="200", message="Success fetch all data", result=_berita)
+
+@router.get("/date/{date}")
+async def filter_title(date:str,db:Session = Depends(get_db)):
+    _berita = crud.get_date(db,date)
+    return Response(status="Ok", code="200", message="Success fetch all data", result=_berita)
+
+@router.get("/website/{website}")
+async def filter_website(website:str,db:Session = Depends(get_db)):
+    _berita = crud.get_website(db,website)
+    return Response(status="Ok", code="200", message="Success fetch all data", result=_berita)
+
+@router.get("/category/{category}")
+async def filter_category(category:str,db:Session = Depends(get_db)):
+    _berita = crud.get_category(db,category)
+    return Response(status="Ok", code="200", message="Success fetch all data", result=_berita)
 
 
-# @router.patch("/update")
-# async def update_book(request: RequestBook, db: Session = Depends(get_db)):
-#     _book = crud.update_book(db, book_id=request.parameter.id,
-#                              title=request.parameter.title, description=request.parameter.description)
-#     return Response(status="Ok", code="200", message="Success update data", result=_book)
 
 
-# @router.delete("/delete")
-# async def delete_book(request: RequestBook,  db: Session = Depends(get_db)):
-#     crud.remove_book(db, book_id=request.parameter.id)
-#     return Response(status="Ok", code="200", message="Success delete data").dict(exclude_none=True)
