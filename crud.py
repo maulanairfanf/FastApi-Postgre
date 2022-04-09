@@ -1,6 +1,5 @@
 from sqlalchemy.orm import Session
 from models import Berita
-# from schemas import BookSchema
 
 
 def get_all(db: Session, skip: int = 0, limit: int = 100):
