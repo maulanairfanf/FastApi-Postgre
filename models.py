@@ -1,4 +1,4 @@
-from sqlalchemy import  Column, Integer, String
+from sqlalchemy import  Column, String
 from config import Base
 
 class Berita(Base):
@@ -7,7 +7,7 @@ class Berita(Base):
     title = Column(String)
     date = Column(String)
     author = Column(String)
-    link = Column(Integer, primary_key=True)
+    link = Column(String, primary_key=True)
     category = Column(String)
     website = Column(String)
     content = Column(String)
