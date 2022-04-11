@@ -42,6 +42,10 @@ async def filter_category(category:str,db:Session = Depends(get_db)):
     _berita = crud.get_category(db,category)
     return Response(status="Ok", code="200", message="Success fetch all data", result=_berita)
 
+@router.get("/author/{author}")
+async def filter_author(author:str,db:Session = Depends(get_db)):
+    _berita = crud.get_author(db,author)
+    return Response(status="Ok", code="200", message="Success fetch all data", result=_berita)
 
 
 
