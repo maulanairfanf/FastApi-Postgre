@@ -28,7 +28,7 @@ async def filter_title(title:str,db:Session = Depends(get_db)):
     return Response(status="Ok", code="200", message="Success fetch all data", result=_berita)
 
 @router.get("/date/{date}")
-async def filter_title(date:str,db:Session = Depends(get_db)):
+async def filter_date(date:str,db:Session = Depends(get_db)):
     _berita = crud.get_date(db,date)
     return Response(status="Ok", code="200", message="Success fetch all data", result=_berita)
 
