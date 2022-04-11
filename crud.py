@@ -7,7 +7,7 @@ def get_all(db: Session, skip: int = 0, limit: int = 100):
     return db.query(Berita).offset(skip).limit(limit).all()
 
 def get_title(db: Session, title: str):
-    return db.query(Berita).filter(Berita.title.contains(title)).all()
+    return db.query(Berita).filter(Berita.title.contains(title.capitalize())).all()
 
 def get_date(db: Session, date: str):
     return db.query(Berita).filter(Berita.date == date).all()
