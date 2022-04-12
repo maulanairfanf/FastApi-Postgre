@@ -19,4 +19,4 @@ def get_website(db: Session, website: str):
     return db.query(Berita).filter(Berita.website == website).all()
 
 def get_author(db: Session, author:str) :
-    return db.query(Berita).filter(Berita.author == author).all()
+    return db.query(Berita).filter(Berita.author.contains(author.capitalize())).all()
