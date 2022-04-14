@@ -18,8 +18,8 @@ def get_db():
 
 
 @router.get("/")
-async def get_all(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    _berita = crud.get_all(db, skip, limit)
+async def get_all(db: Session = Depends(get_db)):
+    _berita = crud.get_all(db)
     return Response(status="Ok", code="200", message="Success fetch all data", result=_berita)
 
 @router.get("/title/{title}")
