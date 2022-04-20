@@ -1,7 +1,6 @@
 from sqlalchemy.orm import Session
 from models import Berita
 
-
 def get_all(db: Session, skip: int = 0, limit: int = 100):
     return db.query(Berita).offset(skip).limit(limit).all()
 
