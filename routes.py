@@ -20,8 +20,8 @@ def get_db():
 
 
 @router.get("/")
-async def get_all(db: Session = Depends(get_db)):
-    _berita = crud.get_all(db)
+async def get_all(db: Session = Depends(get_db), limit: Optional[int] = None):
+    _berita = crud.get_all(db, limit)
     return Response(status="Ok", code="200", message="Success fetch all data", result=_berita)
 
 # single params

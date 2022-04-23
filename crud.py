@@ -36,8 +36,11 @@ def query_category(table, column):
 
 
 # Single Params
-def get_all(db: Session):
-    return db.query(Berita).all()
+def get_all(db: Session, limit: int):
+    if(limit is None):
+        return db.query(Berita).all()
+    else:
+        return db.query(Berita).limit(limit).all()
 
 
 def get_title(db: Session, title: str, limit: int):
