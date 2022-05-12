@@ -54,7 +54,7 @@ def get_date(db: Session, date: str, limit: int):
     if(limit is None):
         return db.query(Berita).filter(query_date(Berita, date)).all()
     else:
-        return db.query(Berita).filter(query_title(Berita, date)).limit(limit).all()
+        return db.query(Berita).filter(query_date(Berita, date)).limit(limit).all()
 
 
 def get_category(db: Session, category: str, limit: int):
