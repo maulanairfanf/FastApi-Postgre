@@ -61,21 +61,21 @@ def get_category(db: Session, category: str, limit: int):
     if(limit is None):
         return db.query(Berita).filter(query_category(Berita, category)).all()
     else:
-        return db.quer(Berita).filter(query_category(Berita, category)).limit(limit).all()
+        return db.query(Berita).filter(query_category(Berita, category)).limit(limit).all()
 
 
 def get_website(db: Session, website: str, limit: int):
     if(limit is None):
         return db.query(Berita).filter(query_website(Berita, website)).all()
     else:
-        return db.quer(Berita).filter(query_website(Berita, website)).limit(limit).all()
+        return db.query(Berita).filter(query_website(Berita, website)).limit(limit).all()
 
 
 def get_author(db: Session, author: str, limit: int):
     if(limit is None):
         return db.query(Berita).filter(query_author(Berita, author)).all()
     else:
-        return db.quer(Berita).filter(query_author(Berita, author)).limit(limit).all()
+        return db.query(Berita).filter(query_author(Berita, author)).limit(limit).all()
 
 
 # More Params
