@@ -6,6 +6,6 @@ from sqlalchemy.orm import sessionmaker
 DATABASE_URL = 'mysql+pymysql://u116665791_maulanairfanf:TanpaPassword79@31.220.110.101:3306/u116665791_WebScraping'
 # DATABASE_URL = 'postgresql://postgres:TanpaPassword@localhost:5432/webScraping'
 
-engine = create_engine(DATABASE_URL)
+engine = create_engine(DATABASE_URL,pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, bind=engine)
 Base = declarative_base()
