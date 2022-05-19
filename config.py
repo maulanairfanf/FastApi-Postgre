@@ -7,5 +7,5 @@ DATABASE_URL = 'mysql+pymysql://u116665791_maulanairfanf:TanpaPassword79@31.220.
 # DATABASE_URL = 'postgresql://postgres:TanpaPassword@localhost:5432/webScraping'
 
 engine = create_engine(DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker(autocommit=False, bind=engine)
 Base = declarative_base()

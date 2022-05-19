@@ -3,7 +3,6 @@ from config import Base
 
 class Berita(Base):
     __tablename__ ="berita"
-
     title = Column(String)
     date = Column(String)
     author = Column(String)
