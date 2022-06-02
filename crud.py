@@ -1,3 +1,4 @@
+import re
 from sqlalchemy.orm import Session
 from models import Berita
 
@@ -109,6 +110,9 @@ def more_params(db: Session, title: str, date: str, website: str, category: str,
         _count = _count + 1
 
     if(limit is None):
+        if(_count == 1):
+            return db.query(Berita).filter(merge_query(Berita, arr_data_params[0], arr_params[0])).all()
+
         if(_count == 2):
             return db.query(Berita).filter(merge_query(Berita, arr_data_params[0], arr_params[0]), merge_query(Berita, arr_data_params[1], arr_params[1])).all()
 
@@ -121,6 +125,9 @@ def more_params(db: Session, title: str, date: str, website: str, category: str,
         if(_count == 5):
             return db.query(Berita).filter(merge_query(Berita, arr_data_params[0], arr_params[0]), merge_query(Berita, arr_data_params[1], arr_params[1]), merge_query(Berita, arr_data_params[2], arr_params[2]), merge_query(Berita, arr_data_params[3], arr_params[3]), merge_query(Berita, arr_data_params[4], arr_params[4])).all()
     else:
+        if(_count == 1):
+            return db.query(Berita).filter(merge_query(Berita, arr_data_params[0], arr_params[0])).limit(limit).all()
+
         if(_count == 2):
             return db.query(Berita).filter(merge_query(Berita, arr_data_params[0], arr_params[0]), merge_query(Berita, arr_data_params[1], arr_params[1])).limit(limit).all()
 
